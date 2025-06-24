@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Personnel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="container mt-4">
+        <h1 data-translate="title">💰 Budget Personnel</h1>
+        <div class="language-selector">
+            <select id="languageSelect">
+                <option value="fr">🇫🇷 Français</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="de">🇩🇪 Deutsch</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
+        </div>
+    </header>
+
+    <section id="budget-summary" class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <h3 data-translate="revenue">Revenus</h3>
+                <p id="total-revenue">0 €</p>
+            </div>
+            <div class="col-md-4">
+                <h3 data-translate="expenses">Dépenses</h3>
+                <p id="total-expenses">0 €</p>
+            </div>
+            <div class="col-md-4">
+                <h3 data-translate="balance">Solde</h3>
+                <p id="balance">0 €</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="input-section" class="container mt-4">
+        <h2 data-translate="newTransaction">Nouvelle Transaction</h2>
+        <form id="transaction-form">
+            <div class="form-group">
+                <label for="transactionDate" data-translate="date">Date</label>
+                <input type="date" class="form-control" id="transactionDate" required>
+            </div>
+            <div class="form-group">
+                <label for="transactionName" data-translate="description">Description</label>
+                <input type="text" class="form-control" id="transactionName" required>
+            </div>
+            <div class="form-group">
+                <label for="transactionAmount" data-translate="amount">Montant (€)</label>
+                <input type="number" class="form-control" id="transactionAmount" required>
+            </div>
+            <div class="form-group">
+                <label for="transactionType" data-translate="type">Type</label>
+                <select class="form-control" id="transactionType">
+                    <option value="revenue" data-translate="revenueOption">Revenu</option>
+                    <option value="expense" data-translate="expenseOption">Dépense</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" data-translate="add">Ajouter</button>
+        </form>
+    </section>
+
+    <section id="transactions-section" class="container mt-4">
+        <h2 data-translate="monthTransactions">Transactions du Mois</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Montant</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-list">
+                <!-- Transactions will be added here -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="chart-section" class="container mt-4">
+        <h2 data-translate="monthlyChart">Graphique Mensuel</h2>
+        <canvas id="monthly-chart"></canvas>
+    </section>
+
+    <section id="yearly-summary" class="container mt-4">
+        <h3 data-translate="totalYearlyRevenue">Total Revenus Annuels</h3>
+        <p id="total-yearly-revenue">0 €</p>
+        <h3 data-translate="totalYearlyExpenses">Total Dépenses Annuelles</h3>
+        <p id="total-yearly-expenses">0 €</p>
+        <h3 data-translate="yearlyBalance">Solde Annuel</h3>
+        <p id="yearly-balance">0 €</p>
+    </section>
+
+    <section id="yearlyView" class="container mt-4">
+        <h2 data-translate="yearlyEvolution">Évolution Annuelle</h2>
+        <canvas id="yearly-evolution-chart"></canvas>
+
+        <h2 data-translate="monthlyBreakdown">Détail par Mois</h2>
+        <canvas id="monthly-breakdown-chart"></canvas>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
