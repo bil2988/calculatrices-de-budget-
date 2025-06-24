@@ -1,132 +1,325 @@
-.language-selector {
-  margin-left: 20px;
+/* Reset et base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.language-selector select {
-  padding: 8px 12px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header moderne */
+header {
   background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+/* Sélecteur de langue stylé */
+.language-selector select {
+  padding: 12px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
   color: white;
   font-size: 1rem;
   cursor: pointer;
   backdrop-filter: blur(10px);
-  min-width: 140px;
-  max-width: 180px;
+  min-width: 160px;
+  transition: all 0.3s ease;
+}
+
+.language-selector select:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .language-selector select:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
 }
 
 .language-selector option {
   background: #2c3e50;
   color: white;
+  padding: 10px;
 }
 
-/* Support RTL pour l'arabe */
-[dir="rtl"] {
-  text-align: right;
+/* Cartes de budget modernes */
+.budget-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 15px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-[dir="rtl"] .transaction-item {
-  flex-direction: row-reverse;
+.budget-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-[dir="rtl"] .transaction-info {
-  text-align: right;
+.budget-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-[dir="rtl"] .form-group {
-  text-align: right;
+.budget-card p {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
 }
 
-[dir="rtl"] .budget-card {
-  text-align: right;
+.revenue-card {
+  border-left: 5px solid #4caf50;
 }
 
-[dir="rtl"] .yearly-card {
-  text-align: right;
+.revenue-card h3 {
+  color: #4caf50;
 }
 
-[dir="rtl"] .month-item {
-  flex-direction: row-reverse;
+.revenue-card p {
+  color: #4caf50;
 }
 
-[dir="rtl"] .current-month {
-  flex-direction: row-reverse;
+.expense-card {
+  border-left: 5px solid #f44336;
 }
 
-[dir="rtl"] header {
-  flex-direction: row-reverse;
+.expense-card h3 {
+  color: #f44336;
 }
 
-[dir="rtl"] .language-selector {
-  margin-left: 0;
-  margin-right: 20px;
+.expense-card p {
+  color: #f44336;
 }
 
-/* Ajustements pour les langues avec des caractères plus longs */
-@media (max-width: 768px) {
-  .language-selector {
-    margin: 10px 0;
-  }
-
-  [dir="rtl"] .language-selector {
-    margin: 10px 0;
-  }
-
-  .language-selector select {
-    min-width: 120px;
-    font-size: 0.9rem;
-  }
+.balance-card {
+  border-left: 5px solid #2196f3;
 }
 
-/* Support pour les langues asiatiques */
-[lang="zh"] {
-  font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+.balance-card h3 {
+  color: #2196f3;
 }
 
-[lang="de"] {
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+/* Formulaire moderne */
+#input-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
-[lang="it"] {
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+#input-section h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
 }
 
-/* Ajustements pour les caractères chinois */
-[lang="zh"] .budget-card h3,
-[lang="zh"] .yearly-card h3 {
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
   font-size: 1rem;
-  line-height: 1.4;
 }
 
-[lang="zh"] .transaction-name {
-  line-height: 1.4;
+.form-control {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
 }
 
-/* Ajustements pour les textes plus longs en allemand */
-[lang="de"] .budget-card h3,
-[lang="de"] .yearly-card h3 {
-  font-size: 0.95rem;
-  line-height: 1.3;
+.form-control:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  transform: translateY(-2px);
 }
 
-[lang="de"] .btn {
+.btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: white;
+  padding: 8px 16px;
   font-size: 0.9rem;
-  padding: 10px 20px;
+  box-shadow: 0 2px 10px rgba(244, 67, 54, 0.3);
 }
 
-/* Footer Styles */
+.btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+
+/* Section des transactions */
+#transactions-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#transactions-section h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.transaction-item {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.transaction-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.transaction-item.revenue {
+  border-left-color: #4caf50;
+}
+
+.transaction-item.expense {
+  border-left-color: #f44336;
+}
+
+.transaction-info {
+  flex: 1;
+}
+
+.transaction-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.transaction-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.transaction-amount {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 20px;
+}
+
+.transaction-amount.revenue {
+  color: #4caf50;
+}
+
+.transaction-amount.expense {
+  color: #f44336;
+}
+
+/* Graphiques */
+#chart-section,
+#yearly-summary,
+#yearlyView {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#chart-section h2,
+#yearly-summary h3,
+#yearlyView h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+canvas {
+  max-width: 100%;
+  height: 400px !important;
+  border-radius: 15px;
+}
+
+/* Footer cosmique */
 footer {
   background: linear-gradient(135deg, #1a237e, #3f51b5, #2196f3);
-  padding: 30px 20px;
+  padding: 40px 20px;
   margin-top: 60px;
-  border-radius: 15px 15px 0 0;
+  border-radius: 20px 20px 0 0;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 footer::before {
@@ -147,36 +340,38 @@ footer * {
 }
 
 footer img {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  filter: brightness(1.1) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
   transition: transform 0.3s ease;
+  margin-bottom: 15px;
 }
 
 footer img:hover {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(5deg);
 }
 
 footer hr {
-  border-color: rgba(255, 255, 255, 0.3);
-  width: 50%;
-  margin: 16px auto;
-  border-width: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  width: 60%;
+  margin: 20px auto;
 }
 
 footer p {
+  color: white;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 footer .text-yellow-400 {
   color: #ffd700;
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
 footer em {
@@ -185,28 +380,130 @@ footer em {
   font-weight: 300;
 }
 
-/* Responsive footer */
-@media (max-width: 768px) {
-  footer {
-    padding: 20px 15px;
-    margin-top: 40px;
-  }
-
-  footer p {
-    font-size: 0.8rem;
-  }
-
-  footer img {
-    height: 28px;
-    width: 28px;
-  }
-}
-
-/* RTL support for footer */
-[dir="rtl"] footer {
+/* Support RTL pour l'arabe */
+[dir="rtl"] {
   text-align: right;
 }
 
-[dir="rtl"] footer p {
-  direction: rtl;
+[dir="rtl"] .transaction-item {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .transaction-info {
+  text-align: right;
+}
+
+[dir="rtl"] .form-group {
+  text-align: right;
+}
+
+[dir="rtl"] header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .language-selector {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .budget-card {
+    margin: 10px 0;
+  }
+
+  .budget-card p {
+    font-size: 1.5rem;
+  }
+
+  .transaction-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .transaction-amount {
+    margin: 0;
+  }
+
+  .language-selector select {
+    min-width: 140px;
+    font-size: 0.9rem;
+  }
+
+  footer {
+    padding: 30px 15px;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Support pour les langues asiatiques */
+[lang="zh"] {
+  font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+}
+
+[lang="de"] {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+[lang="it"] {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.budget-card,
+.transaction-item,
+#input-section,
+#transactions-section {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* États de chargement */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #4caf50;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

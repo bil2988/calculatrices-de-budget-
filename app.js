@@ -496,8 +496,8 @@ class BudgetManager {
     const totals = this.calculateMonthlyTotals(transactions)
     const balance = totals.revenue - totals.expenses
 
-    document.getElementById("totalRevenue").textContent = `${totals.revenue.toFixed(2)} €`
-    document.getElementById("totalExpenses").textContent = `${totals.expenses.toFixed(2)} €`
+    document.getElementById("total-revenue").textContent = `${totals.revenue.toFixed(2)} €`
+    document.getElementById("total-expenses").textContent = `${totals.expenses.toFixed(2)} €`
     document.getElementById("balance").textContent = `${balance.toFixed(2)} €`
     document.getElementById("balance").style.color = balance >= 0 ? "#28a745" : "#dc3545"
 
@@ -533,7 +533,7 @@ class BudgetManager {
   }
 
   displayTransactions(transactions) {
-    const container = document.getElementById("transactionsList")
+    const container = document.getElementById("transaction-list")
 
     if (transactions.length === 0) {
       container.innerHTML = `<p style="text-align: center; color: #6c757d; padding: 20px;">${this.translations[this.currentLanguage].noTransactions}</p>`
