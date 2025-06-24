@@ -23,18 +23,25 @@
         </div>
     </header>
 
+    <div class="container mt-3">
+        <div class="current-month-display">
+            <h2 id="currentMonth">Janvier 2024</h2>
+            <button id="toggleView" class="btn btn-secondary">Vue Annuelle</button>
+        </div>
+    </div>
+
     <section id="budget-summary" class="container mt-4">
         <div class="row">
             <div class="col-md-4">
                 <div class="budget-card revenue-card">
                     <h3 data-translate="revenue">Revenus</h3>
-                    <p id="total-revenue">0 €</p>
+                    <p id="totalRevenue">0 €</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="budget-card expense-card">
                     <h3 data-translate="expenses">Dépenses</h3>
-                    <p id="total-expenses">0 €</p>
+                    <p id="totalExpenses">0 €</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -74,29 +81,30 @@
 
     <section id="transactions-section" class="container mt-4">
         <h2 data-translate="monthTransactions">Transactions du Mois</h2>
-        <div id="transaction-list"></div>
+        <div id="transactionsList"></div>
     </section>
 
     <section id="chart-section" class="container mt-4">
         <h2 data-translate="monthlyChart">Graphique Mensuel</h2>
-        <canvas id="monthly-chart"></canvas>
+        <canvas id="monthlyChart"></canvas>
     </section>
 
-    <section id="yearly-summary" class="container mt-4">
-        <h3 data-translate="totalYearlyRevenue">Total Revenus Annuels</h3>
-        <p id="total-yearly-revenue">0 €</p>
-        <h3 data-translate="totalYearlyExpenses">Total Dépenses Annuelles</h3>
-        <p id="total-yearly-expenses">0 €</p>
-        <h3 data-translate="yearlyBalance">Solde Annuel</h3>
-        <p id="yearly-balance">0 €</p>
+    <section id="yearly-summary" class="container mt-4" style="display: none;">
+        <div class="yearly-card">
+            <h3 data-translate="totalYearlyRevenue">Total Revenus Annuels</h3>
+            <p id="yearlyRevenue">0 €</p>
+            <h3 data-translate="totalYearlyExpenses">Total Dépenses Annuelles</h3>
+            <p id="yearlyExpenses">0 €</p>
+            <h3 data-translate="yearlyBalance">Solde Annuel</h3>
+            <p id="yearlyBalance">0 €</p>
+        </div>
     </section>
 
-    <section id="yearlyView" class="container mt-4">
+    <section id="yearlyView" class="container mt-4" style="display: none;">
         <h2 data-translate="yearlyEvolution">Évolution Annuelle</h2>
-        <canvas id="yearly-evolution-chart"></canvas>
-
+        <canvas id="yearlyChart"></canvas>
         <h2 data-translate="monthlyBreakdown">Détail par Mois</h2>
-        <canvas id="monthly-breakdown-chart"></canvas>
+        <div id="monthlyBreakdown"></div>
     </section>
 
     <!-- Footer -->

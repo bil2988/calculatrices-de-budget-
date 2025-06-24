@@ -330,21 +330,36 @@ class BudgetManager {
   }
 
   setupEventListeners() {
-    document.getElementById("transactionForm").addEventListener("submit", (e) => {
-      e.preventDefault()
-      this.addTransaction()
-    })
+    const form = document.getElementById("transactionForm")
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        this.addTransaction()
+        return false
+      })
+    }
 
-    document.getElementById("toggleView").addEventListener("click", () => {
-      this.toggleView()
-    })
+    const toggleButton = document.getElementById("toggleView")
+    if (toggleButton) {
+      toggleButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        this.toggleView()
+      })
+    }
 
-    document.getElementById("languageSelect").addEventListener("change", (e) => {
-      this.setLanguage(e.target.value)
-    })
+    const languageSelect = document.getElementById("languageSelect")
+    if (languageSelect) {
+      languageSelect.addEventListener("change", (e) => {
+        this.setLanguage(e.target.value)
+      })
+    }
 
     // Set today's date as default
-    document.getElementById("transactionDate").valueAsDate = new Date()
+    const dateInput = document.getElementById("transactionDate")
+    if (dateInput) {
+      dateInput.valueAsDate = new Date()
+    }
   }
 
   setLanguage(lang) {
@@ -431,14 +446,26 @@ class BudgetManager {
 
   addTransaction() {
     const form = document.getElementById("transactionForm")
+    if (!form) return
+
     const formData = new FormData(form)
+
+    const date = formData.get("transactionDate")
+    const name = formData.get("transactionName")
+    const amount = formData.get("transactionAmount")
+    const type = formData.get("transactionType")
+
+    if (!date || !name || !amount) {
+      alert("Veuillez remplir tous les champs")
+      return
+    }
 
     const transaction = {
       id: Date.now(),
-      date: formData.get("transactionDate"),
-      name: formData.get("transactionName"),
-      amount: Number.parseFloat(formData.get("transactionAmount")),
-      type: formData.get("transactionType"),
+      date: date,
+      name: name,
+      amount: Number.parseFloat(amount),
+      type: type,
     }
 
     const transactions = this.getMonthlyTransactions()
@@ -446,7 +473,10 @@ class BudgetManager {
     localStorage.setItem("monthlyTransactions", JSON.stringify(transactions))
 
     form.reset()
-    document.getElementById("transactionDate").valueAsDate = new Date()
+    const dateInput = document.getElementById("transactionDate")
+    if (dateInput) {
+      dateInput.valueAsDate = new Date()
+    }
 
     this.updateDisplay()
     this.updateCharts()
@@ -496,10 +526,16 @@ class BudgetManager {
     const totals = this.calculateMonthlyTotals(transactions)
     const balance = totals.revenue - totals.expenses
 
-    document.getElementById("total-revenue").textContent = `${totals.revenue.toFixed(2)} €`
-    document.getElementById("total-expenses").textContent = `${totals.expenses.toFixed(2)} €`
-    document.getElementById("balance").textContent = `${balance.toFixed(2)} €`
-    document.getElementById("balance").style.color = balance >= 0 ? "#28a745" : "#dc3545"
+    const revenueEl = document.getElementById("totalRevenue")
+    const expensesEl = document.getElementById("totalExpenses")
+    const balanceEl = document.getElementById("balance")
+
+    if (revenueEl) revenueEl.textContent = `${totals.revenue.toFixed(2)} €`
+    if (expensesEl) expensesEl.textContent = `${totals.expenses.toFixed(2)} €`
+    if (balanceEl) {
+      balanceEl.textContent = `${balance.toFixed(2)} €`
+      balanceEl.style.color = balance >= 0 ? "#28a745" : "#dc3545"
+    }
 
     this.displayTransactions(transactions)
   }
@@ -533,7 +569,8 @@ class BudgetManager {
   }
 
   displayTransactions(transactions) {
-    const container = document.getElementById("transaction-list")
+    const container = document.getElementById("transactionsList")
+    if (!container) return
 
     if (transactions.length === 0) {
       container.innerHTML = `<p style="text-align: center; color: #6c757d; padding: 20px;">${this.translations[this.currentLanguage].noTransactions}</p>`
@@ -545,19 +582,19 @@ class BudgetManager {
     container.innerHTML = sortedTransactions
       .map(
         (transaction) => `
-            <div class="transaction-item ${transaction.type}">
-                <div class="transaction-info">
-                    <div class="transaction-name">${transaction.name}</div>
-                    <div class="transaction-date">${new Date(transaction.date).toLocaleDateString(this.getLocaleCode())}</div>
-                </div>
-                <div class="transaction-amount ${transaction.type}">
-                    ${transaction.type === "revenue" ? "+" : "-"}${transaction.amount.toFixed(2)} €
-                </div>
-                <button class="btn btn-danger" onclick="budgetManager.deleteTransaction(${transaction.id})">
-                    ${this.translations[this.currentLanguage].delete}
-                </button>
-            </div>
-        `,
+          <div class="transaction-item ${transaction.type}">
+              <div class="transaction-info">
+                  <div class="transaction-name">${transaction.name}</div>
+                  <div class="transaction-date">${new Date(transaction.date).toLocaleDateString(this.getLocaleCode())}</div>
+              </div>
+              <div class="transaction-amount ${transaction.type}">
+                  ${transaction.type === "revenue" ? "+" : "-"}${transaction.amount.toFixed(2)} €
+              </div>
+              <button class="btn btn-danger" onclick="budgetManager.deleteTransaction(${transaction.id})">
+                  ${this.translations[this.currentLanguage].delete}
+              </button>
+          </div>
+      `,
       )
       .join("")
   }
@@ -620,21 +657,24 @@ class BudgetManager {
   }
 
   toggleView() {
-    const monthlyView = document.getElementById("monthlyView")
+    const monthlyView = document.getElementById("chart-section")
     const yearlyView = document.getElementById("yearlyView")
+    const yearlyStats = document.getElementById("yearly-summary")
     const toggleButton = document.getElementById("toggleView")
 
     if (this.currentView === "monthly") {
-      monthlyView.classList.remove("active")
-      yearlyView.classList.add("active")
-      toggleButton.textContent = this.translations[this.currentLanguage].toggleYearly
+      if (monthlyView) monthlyView.style.display = "none"
+      if (yearlyView) yearlyView.style.display = "block"
+      if (yearlyStats) yearlyStats.style.display = "block"
+      if (toggleButton) toggleButton.textContent = this.translations[this.currentLanguage].toggleMonthly
       this.currentView = "yearly"
       this.updateYearlyDisplay()
       this.updateCharts()
     } else {
-      yearlyView.classList.remove("active")
-      monthlyView.classList.add("active")
-      toggleButton.textContent = this.translations[this.currentLanguage].toggleMonthly
+      if (yearlyView) yearlyView.style.display = "none"
+      if (yearlyStats) yearlyStats.style.display = "none"
+      if (monthlyView) monthlyView.style.display = "block"
+      if (toggleButton) toggleButton.textContent = this.translations[this.currentLanguage].toggleYearly
       this.currentView = "monthly"
       this.updateMonthlyDisplay()
       this.updateCharts()
