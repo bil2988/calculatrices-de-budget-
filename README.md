@@ -1,30 +1,171 @@
-# Personal budget calculator
+# 💰 Calculateur de Budget Personnel Multilingue
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+*Un calculateur de budget personnel complet avec support de 7 langues et réinitialisation mensuelle automatique*
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/codenosenpai-4196s-projects/v0-personal-budget-calculator)
 [![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/NUmRRlJiHQn)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](LICENSE)
 
-## Overview
+## 🌟 Fonctionnalités
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+### 💸 Gestion Financière
+- **Saisie de transactions** : Revenus et dépenses avec date, description et montant
+- **Calcul automatique** : Budget mensuel (revenus - dépenses) en temps réel
+- **Réinitialisation automatique** : Reset des données chaque début de mois
+- **Archivage intelligent** : Conservation de l'historique pour la vue annuelle
 
-## Deployment
+### 📊 Visualisations
+- **Vue mensuelle** : Graphique quotidien des dépenses et revenus
+- **Vue annuelle** : Évolution mensuelle sur l'année complète
+- **Graphiques interactifs** : Charts.js avec données en temps réel
+- **Détail par mois** : Breakdown complet de chaque période
 
-Your project is live at:
+### 🌍 Support Multilingue
+- **7 langues supportées** :
+  - 🇫🇷 Français
+  - 🇺🇸 Anglais
+  - 🇪🇸 Espagnol
+  - 🇸🇦 Arabe (avec support RTL)
+  - 🇮🇹 Italien
+  - 🇩🇪 Allemand
+  - 🇨🇳 Chinois (simplifié)
 
+### 💾 Persistance des Données
+- **LocalStorage** : Sauvegarde automatique locale
+- **Gestion des dates** : Reset mensuel intelligent
+- **Préférences utilisateur** : Langue sauvegardée
+
+## 🚀 Technologies Utilisées
+
+- **Frontend** : HTML5, CSS3, JavaScript ES6+
+- **Graphiques** : Chart.js
+- **Stockage** : LocalStorage API
+- **Responsive** : Design adaptatif mobile-first
+- **Internationalisation** : Système de traduction complet
+
+## 📱 Interface Utilisateur
+
+- **Design moderne** : Interface épurée et intuitive
+- **Cartes colorées** : Visualisation claire des totaux
+- **Responsive** : Adaptation parfaite mobile/desktop
+- **Accessibilité** : Support RTL pour l'arabe
+- **Thème cohérent** : Palette de couleurs harmonieuse
+
+## 🛠️ Installation et Utilisation
+
+### Déploiement en ligne
+Votre projet est accessible à :
 **[https://vercel.com/codenosenpai-4196s-projects/v0-personal-budget-calculator](https://vercel.com/codenosenpai-4196s-projects/v0-personal-budget-calculator)**
 
-## Build your app
+### Développement local
+\`\`\`bash
+# Cloner le repository
+git clone https://github.com/votre-username/calculatrices-de-budget-.git
 
-Continue building your app on:
+# Ouvrir le fichier index.html dans votre navigateur
+open index.html
+\`\`\`
 
-**[https://v0.dev/chat/projects/NUmRRlJiHQn](https://v0.dev/chat/projects/NUmRRlJiHQn)**
+### Utilisation
+1. **Sélectionner la langue** : Utiliser le sélecteur en haut à droite
+2. **Ajouter une transaction** : Remplir le formulaire et cliquer "Ajouter"
+3. **Voir les totaux** : Budget affiché en temps réel
+4. **Basculer les vues** : Bouton "Vue Annuelle/Mensuelle"
+5. **Consulter l'historique** : Détail par mois dans la vue annuelle
 
-## How It Works
+## 🔄 Fonctionnement du Reset Mensuel
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Le système détecte automatiquement le changement de mois et :
+1. **Archive** les données du mois précédent
+2. **Réinitialise** les transactions mensuelles
+3. **Conserve** l'historique pour la vue annuelle
+4. **Maintient** les préférences utilisateur
+
+## 🌐 Support des Langues
+
+Chaque langue inclut :
+- **Traduction complète** de l'interface
+- **Noms des mois** localisés
+- **Formatage des dates** selon la locale
+- **Placeholders** adaptés
+- **Support RTL** pour l'arabe
+- **Polices optimisées** (chinois, etc.)
+
+## 📈 Graphiques et Analyses
+
+### Vue Mensuelle
+- **Évolution quotidienne** : Dépenses et revenus jour par jour
+- **Courbes lissées** : Visualisation claire des tendances
+
+### Vue Annuelle
+- **Comparaison mensuelle** : Barres pour revenus vs dépenses
+- **Évolution temporelle** : Suivi des performances sur l'année
+
+## 🎯 Cas d'Usage
+
+- **Gestion personnelle** : Suivi quotidien des finances
+- **Budgeting familial** : Planification des dépenses
+- **Analyse des tendances** : Identification des patterns
+- **Contrôle des coûts** : Surveillance des dépassements
+- **Planification financière** : Objectifs et projections
+
+## 🔧 Structure du Projet
+
+\`\`\`
+calculatrices-de-budget-/
+├── index.html              # Interface principale
+├── app.js                  # Logique applicative
+├── style.css              # Styles et responsive
+├── assets/
+│   └── img/
+│       └── logo-senpai.png # Logo Code no Senpaï
+├── components/
+│   └── ui/
+│       └── chart.js       # Composants graphiques
+├── LICENSE                 # Licence Apache 2.0
+└── README.md              # Documentation
+\`\`\`
+
+## 🤝 Contribution
+
+Ce projet est synchronisé automatiquement avec [v0.dev](https://v0.dev). 
+Pour contribuer :
+
+1. **Modifier sur v0.dev** : [https://v0.dev/chat/projects/NUmRRlJiHQn](https://v0.dev/chat/projects/NUmRRlJiHQn)
+2. **Déployer** : Les changements sont automatiquement poussés
+3. **Tester** : Vérifier sur l'URL de déploiement
+
+## 📄 Licence
+
+Ce projet est sous licence Apache 2.0. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 🎨 Captures d'écran
+
+### Interface Principale
+- Vue mensuelle avec graphiques interactifs
+- Sélecteur de langue multilingue
+- Formulaire de saisie intuitif
+
+### Vue Annuelle
+- Graphiques de comparaison mensuelle
+- Détail par mois avec totaux
+- Évolution temporelle des finances
+
+---
+
+## 👨‍💻 Créateur
+
+<div align="center">
+  <img src="assets/img/logo-senpai.png" alt="Code no Senpaï" width="80" height="80" style="border-radius: 50%;" />
+  
+  **Projet conçu par [Code no Senpaï](https://github.com/bil2988)**
+  
+  *Coder comme un ninja, enseigner comme un sensei.*
+  
+  [![GitHub](https://img.shields.io/badge/GitHub-bil2988-black?style=flat-square&logo=github)](https://github.com/bil2988)
+  [![v0.dev](https://img.shields.io/badge/v0.dev-Profile-black?style=flat-square)](https://v0.dev)
+</div>
+
+---
+
+*Automatiquement synchronisé avec vos déploiements [v0.dev](https://v0.dev)*
